@@ -13,6 +13,11 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    rules: {
+      "eol-last": ["error", "always"]
+    }
+  }
 ]);
 
 export default eslintConfig;

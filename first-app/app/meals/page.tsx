@@ -1,17 +1,20 @@
 import Link from "next/link";
+import { MealsGrid } from "@/components/meals-grid";
 
-async function MealsPage() {
+import c from "./page.module.css"
+
+export const MealsPage = () => {
   return (
-    <main>
-      <h1>Meals</h1>
-      <div>
-        <Link href="/meals/share">Share meal</Link>
-      </div>
-      <div>
-        <Link href="/meals/slug">Meal [slug]</Link>
-      </div>
-      <Link href="/">Go home</Link>
-    </main>
+    <>
+      <header className={c.header}></header>
+      <h1>Delicious meals, created <span className={c.highlight}>by you</span></h1>
+      <p className={c.cta}>
+        <Link href="/meals/share">Share your favorite Recipe</Link>
+      </p>
+      <main className={c.main}>
+        <MealsGrid meals={[]} />
+      </main>
+    </>
   );
 }
 

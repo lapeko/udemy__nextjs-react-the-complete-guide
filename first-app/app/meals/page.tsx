@@ -4,8 +4,8 @@ import { MealsGrid } from "@/components/meals-grid";
 import c from "./page.module.css"
 import { getMeals } from "@/db/meals";
 
-export const MealsPage = () => {
-  const meals = getMeals()
+export const MealsPage = async () => {
+  const meals = await getMeals()
 
   return (
     <>

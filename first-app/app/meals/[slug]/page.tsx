@@ -1,8 +1,25 @@
 import Image from "next/image";
+import { Metadata } from "next";
 
 import c from "./page.module.css"
 import { getMeal } from "@/pkg/repo/meals";
 import { notFound } from "next/navigation";
+
+export async function generateMetadata({ params }: PageProps<"/meals/[slug]">): Promise<Metadata> {
+  const { slug } = await params;
+  const meal = getMeal(slug);
+
+  if (!meal) {
+    return {
+      title: "Meal Not Found | NextLevel Food",
+    };
+  }
+
+  return {
+    title: `${meal.title} | NextLevel Food`,
+    description: meal.summary,
+  };
+}
 
 async function MealPage({ params }: PageProps<"/meals/[slug]">) {
   const { slug } = await params;
@@ -21,7 +38,7 @@ async function MealPage({ params }: PageProps<"/meals/[slug]">) {
           <Image src={meal.image} fill alt={meal.title} />
         </div>
         <div className={c.headerText}>
-          <h1>Title</h1>
+          <h1>{meal.title}</h1>
           <p className={c.creator}>
             by <a href={meal.creator_email}>{meal.creator}</a>
           </p>

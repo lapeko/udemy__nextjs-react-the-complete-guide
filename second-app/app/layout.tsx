@@ -1,3 +1,4 @@
+import AppHeader from './components/app-header';
 import './globals.css';
 import { ReactNode } from 'react';
 
@@ -7,9 +8,12 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
- return (
+  return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AppHeader />
+        {children}
+      </body>
     </html>
   )
 }

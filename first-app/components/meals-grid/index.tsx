@@ -1,4 +1,4 @@
-import { Meal } from "@/app/domain/entity"
+import { Meal } from "@/pkg/domain/entity"
 import { FC } from "react"
 
 import { MealItem } from "../meals-item"

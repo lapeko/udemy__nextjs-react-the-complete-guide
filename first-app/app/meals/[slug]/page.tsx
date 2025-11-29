@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import c from "./page.module.css"
-import { getMeal } from "@/db/meals";
+import { getMeal } from "@/pkg/repo/meals";
 import { notFound } from "next/navigation";
 
 async function MealPage({ params }: PageProps<"/meals/[slug]">) {

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { MealsGrid } from "@/components/meals-grid";
 
 import c from "./page.module.css"
-import { getMeals } from "@/db/meals";
+import { getMeals } from "@/pkg/repo/meals";
 import { Suspense } from "react";
 
 const Meals = async () => {

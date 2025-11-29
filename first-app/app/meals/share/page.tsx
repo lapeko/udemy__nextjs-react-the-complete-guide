@@ -1,5 +1,5 @@
 import ImagePicker from '@/components/image-picker';
-import { shareMeal } from '@/server/meals';
+import { shareMeal } from '@/pkg/service/meals';
 
 import c from './page.module.css';
 

@@ -8,8 +8,13 @@ import { redirect } from "next/navigation"
 
 import { Meal } from "../domain/entity"
 import { saveMeal } from "../repo/meals"
+import { validMeal as validateMeal } from "./validators"
 
-export const shareMeal = async (formData: FormData) => {
+export type ShareMealState = {
+  message: string | null
+}
+
+export const shareMeal = async (_: ShareMealState, formData: FormData): Promise<ShareMealState> => {
   const title = formData.get('title') as string
   const meal: Meal = {
     title,
@@ -19,6 +24,11 @@ export const shareMeal = async (formData: FormData) => {
     image: formData.get('image') as File,
     creator: formData.get('name') as string,
     creator_email: formData.get('email') as string,
+  }
+
+  const validationResult = validateMeal(meal)
+  if (validationResult.message) {
+    return validationResult
   }
 
   const imageFile = meal.image

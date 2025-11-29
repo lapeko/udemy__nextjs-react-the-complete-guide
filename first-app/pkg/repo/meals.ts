@@ -1,12 +1,12 @@
 import { Meal } from '@/pkg/domain/entity'
 import sql from 'better-sqlite3'
-import { DBMeal } from './entity'
+import { DBMeal, FullDBMeal } from './entity'
 
 const db = sql("db/meals.db")
 
 export const getMeals = async () => {
   await new Promise(res => setTimeout(res, 2000))
-  return db.prepare("SELECT * FROM meals").all() as Meal[]
+  return db.prepare("SELECT * FROM meals").all() as FullDBMeal[]
 }
 
 export const getMeal = (slug: string): Meal =>

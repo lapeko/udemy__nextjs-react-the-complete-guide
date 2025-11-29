@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Meal } from '@/pkg/domain/entity';
+import { FullDBMeal } from '@/pkg/repo/entity';
 
 import c from './style.module.css';
 import { FC } from 'react';
 
-export const MealItem: FC<{ meal: Meal }> = ({ meal: { title, slug, image, summary, creator } }) => {
+export const MealItem: FC<{ meal: FullDBMeal }> = ({ meal: { title, slug, image, summary, creator } }) => {
   return (
     <article className={c.meal}>
       <header>

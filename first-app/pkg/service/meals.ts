@@ -5,6 +5,7 @@ import xss from "xss"
 import { join } from "path"
 import { writeFile } from "fs/promises"
 import { redirect } from "next/navigation"
+import { revalidatePath } from "next/cache"
 
 import { Meal } from "../domain/entity"
 import { saveMeal } from "../repo/meals"
@@ -42,6 +43,8 @@ export const shareMeal = async (_: ShareMealState, formData: FormData): Promise<
     ...meal,
     image: `/images/${fileName}`,
   })
+
+  revalidatePath("/meals")
 
   redirect("/meals")
 }

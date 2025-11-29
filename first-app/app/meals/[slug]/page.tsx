@@ -2,10 +2,15 @@ import Image from "next/image";
 
 import c from "./page.module.css"
 import { getMeal } from "@/db/meals";
+import { notFound } from "next/navigation";
 
 async function MealPage({ params }: PageProps<"/meals/[slug]">) {
   const { slug } = await params;
   const meal = getMeal(slug)
+
+  if (!meal) {
+    notFound()
+  }
 
   meal.instructions = meal.instructions.replaceAll("\n", "<br/>")
 

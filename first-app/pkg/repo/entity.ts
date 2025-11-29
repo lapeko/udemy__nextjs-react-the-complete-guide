@@ -1,13 +1,13 @@
-export type Meal = {
+export type DBMeal = {
   title: string;
   slug: string;
-  image: File;
+  image: string;
   summary: string;
   instructions: string;
   creator: string;
   creator_email: string;
 }
 
-export type FullMeal = Meal & {
+export type FullDBMeal = DBMeal & {
   id: string;
 }

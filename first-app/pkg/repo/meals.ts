@@ -1,7 +1,6 @@
 import { Meal } from '@/pkg/domain/entity'
 import sql from 'better-sqlite3'
-import slugify from 'slugify'
-import xss from 'xss'
+import { DBMeal } from './entity'
 
 const db = sql("db/meals.db")
 
@@ -13,10 +12,7 @@ export const getMeals = async () => {
 export const getMeal = (slug: string): Meal =>
   db.prepare("SELECT * FROM meals WHERE slug = ?").get(slug) as Meal;
 
-export const saveMeal = (meal: Meal) => {
-  meal.slug = slugify(meal.title, { lower: true })
-  meal.instructions = xss(meal.instructions)
-
+export const saveMeal = async (meal: DBMeal) => {
   return db.prepare(`
     INSERT INTO meals (slug, title, image, summary, instructions, creator, creator_email)
     VALUES (@slug, @title, @image, @summary, @instructions, @creator, @creator_email)

@@ -1,1 +1,20 @@
-export default () => <h1>Archive news page</h1>
+import { getAvailableNewsYears } from "@/app/mocks/news"
+import Link from "next/link"
+
+export default () => {
+  const links = getAvailableNewsYears()
+
+  return (
+    <header id="archive-header">
+      <nav>
+        <ul>
+          {links.map(link => (
+            <li key={link}>
+              <Link href={`/archive/${link}`}>{link}</Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
+  )
+}

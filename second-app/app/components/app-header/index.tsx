@@ -2,12 +2,17 @@ import Link from 'next/link';
 
 export default function AppHeader() {
   return (
-    <header>
+    <header id="main-header">
+      <div id="logo">
+        <Link href="/">NextNews</Link>
+      </div>
       <nav>
-        <Link href="/">Home</Link>
-        <Link href="/news">News</Link>
+        <ul>
+          <li>
+            <Link href="/news">News</Link>
+          </li>
+        </ul>
       </nav>
     </header>
-  );
+  )
 }
-

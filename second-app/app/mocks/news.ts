@@ -18,7 +18,7 @@ export function getAvailableNewsYears() {
   }, [] as number[]).sort((a, b) => b - a);
 }
 
-export function getAvailableNewsMonths(year: number) {
+export function getAvailableNewsMonths(year: string) {
   return news.reduce((months, news) => {
     const newsYear = new Date(news.date).getFullYear();
     if (newsYear === +year) {
@@ -35,7 +35,7 @@ export function getNewsForYear(year: string) {
   return news.filter(news => new Date(news.date).getFullYear() === +year);
 }
 
-export function getNewsForYearAndMonth(year: number, month: number) {
+export function getNewsForYearAndMonth(year: string, month: string) {
   return news.filter((news) => {
     const newsYear = new Date(news.date).getFullYear();
     const newsMonth = new Date(news.date).getMonth() + 1;

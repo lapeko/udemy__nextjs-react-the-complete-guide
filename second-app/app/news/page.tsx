@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import news from '../mocks/news';
+import news from '../mocks/news-data';
 
 export default function NewsPage() {
   return (

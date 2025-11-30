@@ -1,4 +1,4 @@
-import news from '@/app/mocks/news';
+import news from '@/app/mocks/news-data';
 import { notFound } from 'next/navigation';
 
 export default async function NewsDetailPage(props: PageProps<'/news/[slug]'>) {

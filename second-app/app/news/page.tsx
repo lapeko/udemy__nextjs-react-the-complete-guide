@@ -1,5 +1,5 @@
-import news from '../mocks/news-data';
-import NewsList from '../components/news-list';
+import news from '@/app/mocks/news-data';
+import NewsList from '@/app/components/news-list';
 
 export default function NewsPage() {
   return (

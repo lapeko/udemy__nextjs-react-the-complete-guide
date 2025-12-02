@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { NewsItem } from '@/pkg/domain/entity';
+import { FullNewsItem } from '@/pkg/domain/entity';
 
-type Props = { news: NewsItem[] };
+type Props = { news: FullNewsItem[] };
 
 export default function NewsList({ news }: Props) {
   return (

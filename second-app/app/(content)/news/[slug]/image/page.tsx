@@ -1,9 +1,9 @@
-import news from "@/app/mocks/news-data";
 import { notFound } from "next/navigation";
+import { getNewsItem } from "@/pkg/domain/repo/news";
 
 export default async ({ params }: PageProps<"/news/[slug]/image">) => {
   const { slug } = await params;
-  const item = news.find(n => n.slug === slug);
+  const item = await getNewsItem(slug);
 
   if (!item) {
     notFound();

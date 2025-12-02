@@ -1,12 +1,11 @@
-'use client'
+import { notFound } from "next/navigation";
+import { getNewsItem } from "@/pkg/domain/repo/news";
 
-import news from "@/app/mocks/news-data";
-import { notFound, useRouter } from "next/navigation";
+import ModalBackdrop from "./modal-backdrop";
 
 export default async ({ params }: PageProps<"/news/[slug]/image">) => {
-  const router = useRouter();
   const { slug } = await params;
-  const item = news.find(n => n.slug === slug);
+  const item = await getNewsItem(slug);
 
   if (!item) {
     notFound();
@@ -14,7 +13,7 @@ export default async ({ params }: PageProps<"/news/[slug]/image">) => {
 
   return (
     <>
-      <div className="modal-backdrop" onClick={router.back} />
+      <ModalBackdrop />
       <dialog className="modal" open>
         <div className="fullscreen-image">
           <img src={`/images/news/${item.image}`} alt={item.title} />

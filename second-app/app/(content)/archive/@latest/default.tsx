@@ -1,8 +1,8 @@
 import NewsList from "@/app/components/news-list"
-import { getLatestNews } from "@/app/mocks/news"
+import { getLatestNews } from "@/pkg/domain/repo/news"
 
-export default () => {
-  const latestNews = getLatestNews()
+export default async () => {
+  const latestNews = await getLatestNews()
 
   return (
     <>

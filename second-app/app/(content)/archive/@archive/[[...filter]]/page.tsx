@@ -2,11 +2,11 @@ import NewsList from "@/app/components/news-list";
 import {
   getAvailableNewsYears,
   getNewsForYear,
-  getAllNews,
+  getNews,
   getNewsForYearAndMonth,
   getAvailableNewsMonths,
-} from "@/app/mocks/news";
-import { NewsItem } from "@/pkg/domain/entity";
+} from "@/pkg/domain/repo/news";
+import { FullNewsItem } from "@/pkg/domain/entity";
 import Link from "next/link";
 
 type Props = {
@@ -16,16 +16,16 @@ type Props = {
 export default async ({ params }: Props) => {
   const { filter } = await params;
 
-  let news: NewsItem[] = [];
-  let links: number[] = [];
+  let news: FullNewsItem[] = [];
+  let links: string[] = [];
   if (!filter) {
-    news = getAllNews();
-    links = getAvailableNewsYears();
+    news = await getNews();
+    links = await getAvailableNewsYears();
   } else if (filter.length === 1) {
-    news = getNewsForYear(filter[0])
+    news = await getNewsForYear(filter[0])
     links = getAvailableNewsMonths(filter[0]);
   } else if (filter.length === 2) {
-    news = getNewsForYearAndMonth(filter[0], filter[1])
+    news = await getNewsForYearAndMonth(filter[0], filter[1])
   }
 
   const newsContent = news.length

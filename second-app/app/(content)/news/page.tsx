@@ -1,8 +1,8 @@
 import NewsList from '@/app/components/news-list';
 import { getNews } from '@/pkg/domain/repo/news';
 
-export default function NewsPage() {
-  const news = getNews()
+export default async function NewsPage() {
+  const news = await getNews();
 
   return (
     <div>

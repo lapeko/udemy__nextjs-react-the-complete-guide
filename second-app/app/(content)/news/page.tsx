@@ -1,9 +1,8 @@
 import NewsList from '@/app/components/news-list';
-import { NewsItem } from "@/pkg/domain/entity"
+import { getNews } from '@/pkg/domain/repo/news';
 
-export default async function NewsPage() {
-  const news = await fetch("http://localhost:8080/news")
-    .then(res => res.json() as Promise<NewsItem[]>)
+export default function NewsPage() {
+  const news = getNews()
 
   return (
     <div>

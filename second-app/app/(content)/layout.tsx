@@ -1,6 +1,7 @@
-import AppHeader from './components/app-header';
-import './globals.css';
 import { ReactNode } from 'react';
+
+import AppHeader from '../components/app-header';
+import '../globals.css';
 
 export const metadata = {
   title: 'Next.js Page Routing & Rendering',
